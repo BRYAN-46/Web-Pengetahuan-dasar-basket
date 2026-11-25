@@ -1,0 +1,1422 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HoopsID - Panduan Lengkap Olahraga Bola Basket</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Oswald untuk nuansa sporty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Oswald:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Oswald", "sans-serif"],
+            },
+            colors: {
+              hoops: {
+                orange: "#EA580C",
+                orangeHover: "#C2410C",
+                dark: "#111827",
+                darker: "#0B0F19",
+                card: "#1F2937",
+                light: "#F9FAFB",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Pola garis lapangan basket halus untuk latar belakang */
+      .court-pattern {
+        background-color: #111827;
+        background-image: radial-gradient(
+          rgba(234, 88, 12, 0.15) 1px,
+          transparent 1px
+        );
+        background-size: 24px 24px;
+      }
+
+      /* Animasi melayang halus untuk ilustrasi bola */
+      @keyframes bounce-slow {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+      .animate-bounce-slow {
+        animation: bounce-slow 3s infinite ease-in-out;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-hoops-orange selection:text-white"
+  >
+    <!-- 1. HEADER & NAVIGASI -->
+    <header
+      class="fixed w-full top-0 z-50 bg-hoops-dark/95 backdrop-blur-md border-b border-gray-800 text-white transition-all"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16 md:h-20">
+          <!-- Logo -->
+          <a href="#beranda" class="flex items-center space-x-2.5 group">
+            <div
+              class="w-10 h-10 rounded-full bg-hoops-orange flex items-center justify-center shadow-lg shadow-orange-600/30 group-hover:scale-105 transition-transform"
+            >
+              <!-- Ikon Bola Basket SVG -->
+              <svg
+                class="w-6 h-6 text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M5.6 5.6C8.5 8.5 8.5 15.5 5.6 18.4"></path>
+                <path d="M18.4 5.6C15.5 8.5 15.5 15.5 18.4 18.4"></path>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <span
+              class="font-display text-2xl tracking-wider uppercase font-bold"
+              >Hoops<span class="text-hoops-orange">ID</span></span
+            >
+          </a>
+
+          <!-- Menu Desktop -->
+          <nav
+            class="hidden md:flex space-x-6 lg:space-x-8 text-sm font-medium"
+          >
+            <a
+              href="#beranda"
+              class="text-gray-300 hover:text-hoops-orange transition-colors py-2"
+              >Beranda</a
+            >
+            <a
+              href="#sejarah"
+              class="text-gray-300 hover:text-hoops-orange transition-colors py-2"
+              >Sejarah</a
+            >
+            <a
+              href="#peraturan"
+              class="text-gray-300 hover:text-hoops-orange transition-colors py-2"
+              >Peraturan Dasar</a
+            >
+            <a
+              href="#posisi"
+              class="text-gray-300 hover:text-hoops-orange transition-colors py-2"
+              >Posisi Pemain</a
+            >
+            <a
+              href="#teknik"
+              class="text-gray-300 hover:text-hoops-orange transition-colors py-2"
+              >Teknik Dasar</a
+            >
+            <a
+              href="#interaktif"
+              class="bg-hoops-orange hover:bg-hoops-orangeHover text-white px-4 py-2 rounded-lg transition-colors shadow-md"
+              >Kuis & Fakta</a
+            >
+          </nav>
+
+          <!-- Tombol Menu Mobile -->
+          <button
+            id="mobile-menu-btn"
+            aria-label="Buka Menu"
+            class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 focus:outline-none"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Dropdown Menu Mobile -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-hoops-darker border-b border-gray-800 px-4 pt-2 pb-4 space-y-1"
+      >
+        <a
+          href="#beranda"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+          >Beranda</a
+        >
+        <a
+          href="#sejarah"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+          >Sejarah</a
+        >
+        <a
+          href="#peraturan"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+          >Peraturan Dasar</a
+        >
+        <a
+          href="#posisi"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+          >Posisi Pemain</a
+        >
+        <a
+          href="#teknik"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800"
+          >Teknik Dasar</a
+        >
+        <a
+          href="#interaktif"
+          class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium bg-hoops-orange text-white mt-2 text-center"
+          >Kuis & Fakta Menarik</a
+        >
+      </div>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section
+      id="beranda"
+      class="court-pattern text-white pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden"
+    >
+      <!-- Aksen Cahaya Oranye -->
+      <div
+        class="absolute top-20 right-10 w-72 h-72 bg-hoops-orange/20 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="absolute bottom-10 left-10 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <!-- Konten Teks Hero -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div
+              class="inline-flex items-center space-x-2 bg-gray-800/80 border border-gray-700 rounded-full px-4 py-1.5 mb-6"
+            >
+              <span
+                class="w-2.5 h-2.5 rounded-full bg-hoops-orange animate-pulse"
+              ></span>
+              <span
+                class="text-xs sm:text-sm font-semibold tracking-wide text-orange-400 uppercase"
+                >Kecepatan • Strategi • Kerja Sama Tim</span
+              >
+            </div>
+            <h1
+              class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-tight mb-6"
+            >
+              Kuasai Lapangan, <br />
+              <span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-hoops-orange to-amber-400"
+                >Raih Kemenangan!</span
+              >
+            </h1>
+            <p
+              class="text-gray-300 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0 mb-8 leading-relaxed"
+            >
+              Pelajari segala hal tentang bola basket—mulai dari sejarah
+              penemuannya di tahun 1891, aturan main resmi, peran lima posisi
+              pemain, hingga teknik fundamental untuk menjadi pemain andal.
+            </p>
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+            >
+              <a
+                href="#sejarah"
+                class="w-full sm:w-auto px-8 py-3.5 bg-hoops-orange hover:bg-hoops-orangeHover text-white font-semibold rounded-xl shadow-lg shadow-orange-600/30 transition-all transform hover:-translate-y-0.5 text-center"
+              >
+                Mulai Belajar Sekarang
+              </a>
+              <a
+                href="#interaktif"
+                class="w-full sm:w-auto px-8 py-3.5 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-semibold rounded-xl transition-all text-center"
+              >
+                Uji Pengetahuan (Kuis)
+              </a>
+            </div>
+          </div>
+
+          <!-- Ilustrasi SVG Ring & Bola Basket Modern -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div
+              class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center"
+            >
+              <!-- Lingkaran Latar -->
+              <div
+                class="absolute inset-0 rounded-full border-2 border-dashed border-gray-700 animate-[spin_30s_linear_infinite]"
+              ></div>
+              <div
+                class="absolute inset-4 rounded-full bg-gradient-to-tr from-hoops-card to-gray-800 border border-gray-700 shadow-2xl flex items-center justify-center"
+              >
+                <!-- Ilustrasi Bola Basket Besar -->
+                <svg
+                  class="w-44 h-44 sm:w-52 sm:h-52 text-hoops-orange animate-bounce-slow drop-shadow-[0_15px_15px_rgba(234,88,12,0.35)]"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                >
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="44"
+                    fill="url(#ballGrad)"
+                    stroke="#111827"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M19 19 C 38 38, 38 62, 19 81"
+                    stroke="#111827"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                  <path
+                    d="M81 19 C 62 38, 62 62, 81 81"
+                    stroke="#111827"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                  <line
+                    x1="6"
+                    y1="50"
+                    x2="94"
+                    y2="50"
+                    stroke="#111827"
+                    stroke-width="3"
+                  />
+                  <line
+                    x1="50"
+                    y1="6"
+                    x2="50"
+                    y2="94"
+                    stroke="#111827"
+                    stroke-width="3"
+                  />
+                  <defs>
+                    <radialGradient id="ballGrad" cx="35%" cy="30%" r="70%">
+                      <stop offset="0%" stop-color="#FB923C" />
+                      <stop offset="60%" stop-color="#EA580C" />
+                      <stop offset="100%" stop-color="#9A3412" />
+                    </radialGradient>
+                  </defs>
+                </svg>
+              </div>
+              <!-- Badge Statistik Mini -->
+              <div
+                class="absolute -bottom-3 -left-3 bg-hoops-dark border border-gray-700 px-4 py-2.5 rounded-xl shadow-xl"
+              >
+                <p class="text-xs text-gray-400">Tinggi Ring Resmi</p>
+                <p class="font-display text-lg font-bold text-hoops-orange">
+                  3,05 Meter (10 ft)
+                </p>
+              </div>
+              <div
+                class="absolute -top-3 -right-3 bg-hoops-dark border border-gray-700 px-4 py-2.5 rounded-xl shadow-xl"
+              >
+                <p class="text-xs text-gray-400">Pemain Per Tim</p>
+                <p class="font-display text-lg font-bold text-white">
+                  5 Pemain Inti
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BAGIAN SEJARAH SINGKAT -->
+    <section id="sejarah" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span
+            class="text-hoops-orange font-bold tracking-wider uppercase text-sm"
+            >Asal Usul Permainan</span
+          >
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold text-hoops-dark uppercase mt-2"
+          >
+            Sejarah Singkat Bola Basket
+          </h2>
+          <p class="text-gray-600 mt-3">
+            Dari keranjang buah persik di ruang olahraga tertutup hingga menjadi
+            salah satu olahraga paling populer di dunia.
+          </p>
+        </div>
+
+        <!-- Timeline Sejarah -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Era 1 -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 relative hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="inline-block bg-hoops-orange text-white font-display font-bold px-3.5 py-1 rounded-lg text-sm mb-4"
+            >
+              Desember 1891
+            </div>
+            <h3 class="text-xl font-bold text-hoops-dark mb-3">
+              Penemuan oleh Dr. James Naismith
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Guru olahraga asal Kanada, <strong>Dr. James Naismith</strong>,
+              menciptakan permainan ini di Springfield, Massachusetts, AS.
+              Tujuannya adalah menjaga kebugaran siswa di dalam ruangan selama
+              musim dingin menggunakan bola sepak dan dua keranjang buah persik
+              yang dipaku di ketinggian 10 kaki.
+            </p>
+          </div>
+
+          <!-- Era 2 -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 relative hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="inline-block bg-hoops-dark text-white font-display font-bold px-3.5 py-1 rounded-lg text-sm mb-4"
+            >
+              1932 & 1936
+            </div>
+            <h3 class="text-xl font-bold text-hoops-dark mb-3">
+              Lahirnya FIBA & Debut Olimpiade
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Federasi Bola Basket Internasional (<strong>FIBA</strong>)
+              didirikan pada tahun 1932 di Jenewa untuk menyatukan peraturan
+              global. Empat tahun kemudian, pada Olimpiade Berlin 1936, bola
+              basket resmi dipertandingkan sebagai cabang olahraga medali untuk
+              pertama kalinya.
+            </p>
+          </div>
+
+          <!-- Era 3 -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 relative hover:shadow-lg transition-shadow"
+          >
+            <div
+              class="inline-block bg-hoops-orange text-white font-display font-bold px-3.5 py-1 rounded-lg text-sm mb-4"
+            >
+              1946 – Modern
+            </div>
+            <h3 class="text-xl font-bold text-hoops-dark mb-3">
+              Era NBA & Fenomena Global
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Berdirinya NBA (National Basketball Association) membawa basket ke
+              panggung hiburan dunia dengan tempo cepat, garis tembakan tiga
+              angka, dan ikon legendaris. Di Indonesia sendiri, liga profesional
+              IBL terus berkembang pesat melahirkan talenta-talenta muda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BAGIAN PERATURAN DASAR -->
+    <section
+      id="peraturan"
+      class="py-16 md:py-24 bg-gray-100 border-y border-gray-200"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span
+            class="text-hoops-orange font-bold tracking-wider uppercase text-sm"
+            >Pahami Aturan Main</span
+          >
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold text-hoops-dark uppercase mt-2"
+          >
+            Peraturan Dasar Pertandingan
+          </h2>
+          <p class="text-gray-600 mt-3">
+            Ketahui cara menghitung poin, durasi permainan, serta pelanggaran
+            yang wajib dihindari di lapangan.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Kolom 1: Durasi & Tim -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-orange-100 text-hoops-orange flex items-center justify-center mb-5"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-hoops-dark mb-4">
+              Durasi & Waktu Serang
+            </h3>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-2.5">
+                <span class="text-hoops-orange font-bold">•</span>
+                <span
+                  ><strong>4 Kuarter:</strong> Standar FIBA memainkan 4 kuarter
+                  × 10 menit (NBA: 4 × 12 menit).</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-hoops-orange font-bold">•</span>
+                <span
+                  ><strong>Shot Clock (24 Detik):</strong> Tim penyerang wajib
+                  menembak bola menyentuh ring dalam 24 detik.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-hoops-orange font-bold">•</span>
+                <span
+                  ><strong>Overtime (OT):</strong> Jika skor seri di akhir
+                  kuarter 4, ditambah babak perpanjangan 5 menit hingga ada
+                  pemenang.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Kolom 2: Sistem Poin (1, 2, 3) -->
+          <div
+            class="bg-hoops-dark text-white rounded-2xl p-6 sm:p-8 shadow-lg"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-hoops-orange text-white flex items-center justify-center mb-5"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold mb-4">Sistem Perolehan Poin</h3>
+            <div class="space-y-4">
+              <div
+                class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex items-center justify-between"
+              >
+                <div>
+                  <p class="font-bold text-white text-sm">
+                    Free Throw (Lemparan Bebas)
+                  </p>
+                  <p class="text-xs text-gray-400">
+                    Diberikan setelah dilanggar lawan
+                  </p>
+                </div>
+                <span class="font-display text-2xl font-bold text-hoops-orange"
+                  >+1</span
+                >
+              </div>
+              <div
+                class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex items-center justify-between"
+              >
+                <div>
+                  <p class="font-bold text-white text-sm">
+                    Two-Point Field Goal
+                  </p>
+                  <p class="text-xs text-gray-400">
+                    Tembakan masuk di dalam garis busur
+                  </p>
+                </div>
+                <span class="font-display text-2xl font-bold text-hoops-orange"
+                  >+2</span
+                >
+              </div>
+              <div
+                class="bg-gray-800/80 p-3.5 rounded-xl border border-gray-700 flex items-center justify-between"
+              >
+                <div>
+                  <p class="font-bold text-white text-sm">Three-Point Shot</p>
+                  <p class="text-xs text-gray-400">
+                    Tembakan jarak jauh di luar garis 3 poin
+                  </p>
+                </div>
+                <span class="font-display text-2xl font-bold text-hoops-orange"
+                  >+3</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Kolom 3: Pelanggaran Umum -->
+          <div
+            class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-200"
+          >
+            <div
+              class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-5"
+            >
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-hoops-dark mb-4">
+              Pelanggaran (Violations & Fouls)
+            </h3>
+            <ul class="space-y-3 text-sm text-gray-600">
+              <li class="flex items-start gap-2.5">
+                <span class="text-red-500 font-bold">•</span>
+                <span
+                  ><strong>Traveling:</strong> Melangkah lebih dari 2 langkah
+                  sambil memegang bola tanpa memantulkannya (dribble).</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-red-500 font-bold">•</span>
+                <span
+                  ><strong>Double Dribble:</strong> Mendribble bola dengan dua
+                  tangan sekaligus, atau mendribble lagi setelah sempat berhenti
+                  memegang bola.</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="text-red-500 font-bold">•</span>
+                <span
+                  ><strong>Personal Foul:</strong> Kontak fisik ilegal
+                  (mendorong, memukul tangan) terhadap lawan. Maksimal 5 kali
+                  foul per pemain (FIBA).</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BAGIAN 5 POSISI PEMAIN BASKET (INTERAKTIF) -->
+    <section id="posisi" class="py-16 md:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span
+            class="text-hoops-orange font-bold tracking-wider uppercase text-sm"
+            >Formasi & Strategi</span
+          >
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold text-hoops-dark uppercase mt-2"
+          >
+            5 Posisi Pemain Basket
+          </h2>
+          <p class="text-gray-600 mt-3">
+            Klik salah satu kartu posisi di bawah untuk melihat peran utama,
+            atribut fisik ideal, dan contoh gaya bermainnya.
+          </p>
+        </div>
+
+        <!-- Grid Kartu 5 Posisi -->
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8"
+          id="position-cards"
+        >
+          <!-- Card 1: PG -->
+          <button
+            onclick="selectPosition(0)"
+            class="pos-card active-pos text-left p-5 rounded-2xl border-2 border-hoops-orange bg-orange-50/60 transition-all hover:shadow-md focus:outline-none"
+          >
+            <span
+              class="inline-block px-2.5 py-0.5 rounded-md bg-hoops-orange text-white font-display text-xs font-bold mb-2"
+              >POSISI 1</span
+            >
+            <h3 class="font-bold text-hoops-dark text-lg">Point Guard</h3>
+            <p class="text-xs text-gray-500 mt-1">Jenderal Lapangan (PG)</p>
+          </button>
+
+          <!-- Card 2: SG -->
+          <button
+            onclick="selectPosition(1)"
+            class="pos-card text-left p-5 rounded-2xl border-2 border-gray-200 bg-white hover:border-orange-300 transition-all hover:shadow-md focus:outline-none"
+          >
+            <span
+              class="inline-block px-2.5 py-0.5 rounded-md bg-gray-800 text-white font-display text-xs font-bold mb-2"
+              >POSISI 2</span
+            >
+            <h3 class="font-bold text-hoops-dark text-lg">Shooting Guard</h3>
+            <p class="text-xs text-gray-500 mt-1">Penembak Jitu (SG)</p>
+          </button>
+
+          <!-- Card 3: SF -->
+          <button
+            onclick="selectPosition(2)"
+            class="pos-card text-left p-5 rounded-2xl border-2 border-gray-200 bg-white hover:border-orange-300 transition-all hover:shadow-md focus:outline-none"
+          >
+            <span
+              class="inline-block px-2.5 py-0.5 rounded-md bg-gray-800 text-white font-display text-xs font-bold mb-2"
+              >POSISI 3</span
+            >
+            <h3 class="font-bold text-hoops-dark text-lg">Small Forward</h3>
+            <p class="text-xs text-gray-500 mt-1">Pemain Serba Bisa (SF)</p>
+          </button>
+
+          <!-- Card 4: PF -->
+          <button
+            onclick="selectPosition(3)"
+            class="pos-card text-left p-5 rounded-2xl border-2 border-gray-200 bg-white hover:border-orange-300 transition-all hover:shadow-md focus:outline-none"
+          >
+            <span
+              class="inline-block px-2.5 py-0.5 rounded-md bg-gray-800 text-white font-display text-xs font-bold mb-2"
+              >POSISI 4</span
+            >
+            <h3 class="font-bold text-hoops-dark text-lg">Power Forward</h3>
+            <p class="text-xs text-gray-500 mt-1">Petarung Area Kunci (PF)</p>
+          </button>
+
+          <!-- Card 5: C -->
+          <button
+            onclick="selectPosition(4)"
+            class="pos-card col-span-2 sm:col-span-1 text-left p-5 rounded-2xl border-2 border-gray-200 bg-white hover:border-orange-300 transition-all hover:shadow-md focus:outline-none"
+          >
+            <span
+              class="inline-block px-2.5 py-0.5 rounded-md bg-gray-800 text-white font-display text-xs font-bold mb-2"
+              >POSISI 5</span
+            >
+            <h3 class="font-bold text-hoops-dark text-lg">Center</h3>
+            <p class="text-xs text-gray-500 mt-1">Menara Pertahanan (C)</p>
+          </button>
+        </div>
+
+        <!-- Panel Detail Posisi Aktif -->
+        <div
+          id="position-detail"
+          class="bg-hoops-dark text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-gray-800 transition-all"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-8">
+              <div class="flex items-center gap-3 mb-3">
+                <span
+                  id="pos-badge"
+                  class="px-3 py-1 bg-hoops-orange text-white font-display font-bold rounded-lg text-sm"
+                  >PG • #1</span
+                >
+                <span
+                  id="pos-role"
+                  class="text-orange-400 font-semibold text-sm uppercase tracking-wider"
+                  >Pengatur Serangan Utama</span
+                >
+              </div>
+              <h3
+                id="pos-title"
+                class="font-display text-3xl sm:text-4xl font-bold mb-4"
+              >
+                Point Guard (PG)
+              </h3>
+              <p id="pos-desc" class="text-gray-300 leading-relaxed mb-6">
+                Point Guard adalah otak permainan di lapangan. Mereka bertugas
+                membawa bola melewati garis tengah, mengatur ritme serangan tim,
+                membaca pertahanan lawan, dan memberikan umpan matang (assist)
+                kepada rekan setim yang berada di posisi terbuka.
+              </p>
+              <div class="flex flex-wrap gap-2" id="pos-skills">
+                <span
+                  class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs font-medium text-gray-200"
+                  >Ball Handling Elit</span
+                >
+                <span
+                  class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs font-medium text-gray-200"
+                  >Visi Lapangan Luas</span
+                >
+                <span
+                  class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs font-medium text-gray-200"
+                  >Kecepatan Tinggi</span
+                >
+              </div>
+            </div>
+            <div
+              class="md:col-span-4 bg-gray-800/70 border border-gray-700 rounded-xl p-5"
+            >
+              <h4
+                class="text-xs uppercase tracking-wider text-gray-400 font-bold mb-3"
+              >
+                Profil Posisi
+              </h4>
+              <div class="space-y-3 text-sm">
+                <div class="flex justify-between border-b border-gray-700 pb-2">
+                  <span class="text-gray-400">Area Utama:</span>
+                  <span id="pos-zone" class="font-semibold text-white"
+                    >Perimeter / Luar Busur</span
+                  >
+                </div>
+                <div class="flex justify-between border-b border-gray-700 pb-2">
+                  <span class="text-gray-400">Fokus Utama:</span>
+                  <span id="pos-focus" class="font-semibold text-hoops-orange"
+                    >Playmaking & Steal</span
+                  >
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-400">Legenda Dunia:</span>
+                  <span id="pos-star" class="font-semibold text-white"
+                    >Stephen Curry, Magic Johnson</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. BAGIAN TEKNIK DASAR -->
+    <section id="teknik" class="py-16 md:py-24 bg-hoops-darker text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span
+            class="text-hoops-orange font-bold tracking-wider uppercase text-sm"
+            >Skill Fundamental</span
+          >
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold uppercase mt-2"
+          >
+            4 Teknik Dasar Bola Basket
+          </h2>
+          <p class="text-gray-400 mt-3">
+            Fondasi wajib yang harus dikuasai setiap pemula sebelum mempelajari
+            strategi tingkat lanjut.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Teknik 1: Dribbling -->
+          <div
+            class="bg-hoops-card border border-gray-800 rounded-2xl p-6 hover:border-hoops-orange transition-all group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-hoops-orange/15 text-hoops-orange flex items-center justify-center mb-5 group-hover:bg-hoops-orange group-hover:text-white transition-colors"
+            >
+              <!-- SVG Dribbling -->
+              <svg
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="9" r="5"></circle>
+                <path d="M8 17h8M6 21h12"></path>
+                <path d="M12 14v3"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase mb-2">
+              1. Dribbling
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Teknik memantulkan bola ke lantai menggunakan ujung jari (bukan
+              telapak tangan) sambil bergerak atau melindungi bola dari lawan.
+            </p>
+            <span class="text-xs font-semibold text-orange-400"
+              >Variasi: Crossover, Behind the Back</span
+            >
+          </div>
+
+          <!-- Teknik 2: Passing -->
+          <div
+            class="bg-hoops-card border border-gray-800 rounded-2xl p-6 hover:border-hoops-orange transition-all group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-hoops-orange/15 text-hoops-orange flex items-center justify-center mb-5 group-hover:bg-hoops-orange group-hover:text-white transition-colors"
+            >
+              <!-- SVG Passing -->
+              <svg
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="12" r="3"></circle>
+                <path d="M9 12h6m-2-2l2 2-2 2"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase mb-2">
+              2. Passing
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Teknik mengoper bola kepada rekan satu tim secara cepat dan akurat
+              untuk membuka ruang tembak dan mengalirkan serangan.
+            </p>
+            <span class="text-xs font-semibold text-orange-400"
+              >Jenis: Chest Pass, Bounce Pass, Overhead</span
+            >
+          </div>
+
+          <!-- Teknik 3: Shooting -->
+          <div
+            class="bg-hoops-card border border-gray-800 rounded-2xl p-6 hover:border-hoops-orange transition-all group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-hoops-orange/15 text-hoops-orange flex items-center justify-center mb-5 group-hover:bg-hoops-orange group-hover:text-white transition-colors"
+            >
+              <!-- SVG Shooting -->
+              <svg
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 18Q12 4 20 14"></path>
+                <circle cx="20" cy="14" r="2.5"></circle>
+                <path d="M17 19h6"></path>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase mb-2">
+              3. Shooting
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Teknik menembak bola ke arah ring untuk mencetak angka.
+              Membutuhkan keseimbangan tubuh, fokus mata (BEEF), dan lecutan
+              pergelangan tangan.
+            </p>
+            <span class="text-xs font-semibold text-orange-400"
+              >Jenis: Jump Shot, Lay-up, Hook Shot</span
+            >
+          </div>
+
+          <!-- Teknik 4: Rebounding -->
+          <div
+            class="bg-hoops-card border border-gray-800 rounded-2xl p-6 hover:border-hoops-orange transition-all group"
+          >
+            <div
+              class="w-14 h-14 rounded-2xl bg-hoops-orange/15 text-hoops-orange flex items-center justify-center mb-5 group-hover:bg-hoops-orange group-hover:text-white transition-colors"
+            >
+              <!-- SVG Rebounding -->
+              <svg
+                class="w-8 h-8"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M12 19V5m0 0l-4 4m4-4l4 4"></path>
+                <rect x="6" y="3" width="12" height="2" rx="1"></rect>
+              </svg>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase mb-2">
+              4. Rebounding
+            </h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Teknik menangkap bola pantul yang gagal masuk ke ring, baik saat
+              bertahan (defensive rebound) maupun menyerang (offensive rebound).
+            </p>
+            <span class="text-xs font-semibold text-orange-400"
+              >Kunci: Teknik Box Out & Lompatan</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. FITUR INTERAKTIF: KUIS PENGETAHUAN & FAKTA MENARIK -->
+    <section id="interaktif" class="py-16 md:py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span
+            class="text-hoops-orange font-bold tracking-wider uppercase text-sm"
+            >Zona Interaktif</span
+          >
+          <h2
+            class="font-display text-3xl sm:text-4xl font-bold text-hoops-dark uppercase mt-2"
+          >
+            Uji Pengetahuan & Fakta Unik
+          </h2>
+          <p class="text-gray-600 mt-3">
+            Seberapa jauh pemahamanmu tentang olahraga bola basket? Jawab 4
+            pertanyaan singkat di bawah ini!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Kolom Kiri (7 Kolom): Kuis Interaktif -->
+          <div
+            class="lg:col-span-7 bg-white rounded-2xl shadow-md border border-gray-200 p-6 sm:p-8"
+          >
+            <div
+              class="flex items-center justify-between border-b border-gray-100 pb-4 mb-6"
+            >
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-hoops-orange"></span>
+                <h3 class="font-bold text-lg text-hoops-dark">
+                  Kuis Cepat Bola Basket
+                </h3>
+              </div>
+              <span
+                id="quiz-progress"
+                class="text-xs font-bold px-3 py-1 bg-orange-100 text-hoops-orange rounded-full"
+              >
+                Pertanyaan 1 dari 4
+              </span>
+            </div>
+
+            <!-- Kontainer Soal Kuis -->
+            <div id="quiz-container">
+              <h4
+                id="quiz-question"
+                class="text-lg sm:text-xl font-bold text-gray-900 mb-6"
+              >
+                Siapakah tokoh yang menemukan olahraga bola basket pada tahun
+                1891?
+              </h4>
+              <div id="quiz-options" class="space-y-3">
+                <!-- Opsi dirender via JavaScript -->
+              </div>
+              <div
+                id="quiz-feedback"
+                class="hidden mt-5 p-4 rounded-xl text-sm font-medium"
+              ></div>
+              <div class="mt-6 flex justify-end">
+                <button
+                  id="next-btn"
+                  onclick="nextQuestion()"
+                  class="hidden px-6 py-2.5 bg-hoops-dark hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors"
+                >
+                  Pertanyaan Berikutnya →
+                </button>
+              </div>
+            </div>
+
+            <!-- Kontainer Hasil Akhir Kuis -->
+            <div id="quiz-result" class="hidden text-center py-6">
+              <div
+                class="w-20 h-20 mx-auto rounded-full bg-orange-100 text-hoops-orange flex items-center justify-center mb-4"
+              >
+                <svg
+                  class="w-10 h-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                  ></path>
+                </svg>
+              </div>
+              <h4
+                class="font-display text-3xl font-bold text-hoops-dark uppercase"
+              >
+                Kuis Selesai!
+              </h4>
+              <p class="text-gray-600 mt-2">Skor akhir kamu adalah:</p>
+              <div
+                class="font-display text-5xl font-bold text-hoops-orange my-4"
+              >
+                <span id="final-score">0</span> / 100
+              </div>
+              <p
+                id="score-message"
+                class="text-sm text-gray-700 font-medium max-w-md mx-auto mb-6"
+              ></p>
+              <button
+                onclick="restartQuiz()"
+                class="px-6 py-3 bg-hoops-orange hover:bg-hoops-orangeHover text-white font-semibold rounded-xl shadow-md transition-colors"
+              >
+                Ulangi Kuis
+              </button>
+            </div>
+          </div>
+
+          <!-- Kolom Kanan (5 Kolom): Fakta Menarik Basket -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="bg-hoops-dark text-white rounded-2xl p-6 shadow-md">
+              <h3
+                class="font-display text-xl uppercase tracking-wide text-hoops-orange mb-4"
+              >
+                Tahukah Kamu? (Fakta Unik)
+              </h3>
+              <div class="space-y-4">
+                <div class="border-l-2 border-hoops-orange pl-4">
+                  <h4 class="font-bold text-sm text-white">
+                    Awalnya Menggunakan Bola Sepak
+                  </h4>
+                  <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                    Pada tahun 1891 hingga 1894, basket dimainkan menggunakan
+                    bola sepak berwarna cokelat sebelum bola khusus basket
+                    dibuat.
+                  </p>
+                </div>
+                <div class="border-l-2 border-hoops-orange pl-4">
+                  <h4 class="font-bold text-sm text-white">
+                    Keranjang Buah Tanpa Lubang
+                  </h4>
+                  <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                    Dulu setiap kali bola masuk ke keranjang buah persik, wasit
+                    harus naik tangga untuk mengambil bola tersebut secara
+                    manual!
+                  </p>
+                </div>
+                <div class="border-l-2 border-hoops-orange pl-4">
+                  <h4 class="font-bold text-sm text-white">
+                    Dribble Awalnya Dilarang
+                  </h4>
+                  <p class="text-xs text-gray-400 mt-1 leading-relaxed">
+                    Dalam 13 aturan asli Dr. Naismith, pemain tidak boleh
+                    berlari sambil memantulkan bola; bola hanya boleh dioper
+                    dari titik ia ditangkap.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer
+      class="bg-hoops-darker text-gray-400 border-t border-gray-800 py-10"
+    >
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center space-x-2">
+          <span class="w-3 h-3 rounded-full bg-hoops-orange"></span>
+          <span
+            class="font-display text-xl text-white font-bold uppercase tracking-wider"
+            >Hoops<span class="text-hoops-orange">ID</span></span
+          >
+        </div>
+        <p class="text-xs sm:text-sm text-center sm:text-right">
+          &copy; 2026 HoopsID — Portal Edukasi Olahraga Bola Basket Indonesia.
+          Hak Cipta Dilindungi.
+        </p>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTERAKTIF -->
+    <script>
+      // --- 1. NAVIGASI MOBILE ---
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-link");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+
+      // --- 2. DATA & INTERAKSI 5 POSISI PEMAIN ---
+      const positionsData = [
+        {
+          badge: "PG • #1",
+          role: "Pengatur Serangan Utama",
+          title: "Point Guard (PG)",
+          desc: "Point Guard adalah otak permainan di lapangan. Mereka bertugas membawa bola melewati garis tengah, mengatur ritme serangan tim, membaca pertahanan lawan, dan memberikan umpan matang (assist) kepada rekan setim yang berada di posisi terbuka.",
+          skills: [
+            "Ball Handling Elit",
+            "Visi Lapangan Luas",
+            "Kecepatan & Kelincahan",
+          ],
+          zone: "Perimeter / Luar Busur",
+          focus: "Playmaking & Steal",
+          star: "Stephen Curry, Magic Johnson",
+        },
+        {
+          badge: "SG • #2",
+          role: "Pencetak Angka Utama",
+          title: "Shooting Guard (SG)",
+          desc: "Shooting Guard umumnya merupakan penembak jarak jauh terbaik di dalam tim. Mereka terus bergerak mencari ruang kosong tanpa bola untuk melepaskan tembakan tiga angka maupun menerobos ke area pertahanan lawan.",
+          skills: [
+            "Tembakan 3 Poin Akurat",
+            "Pergerakan Tanpa Bola",
+            "Pertahanan Perimeter",
+          ],
+          zone: "Sayap & Sudut Lapangan",
+          focus: "Scoring & Tembakan Jarak Jauh",
+          star: "Michael Jordan, Kobe Bryant",
+        },
+        {
+          badge: "SF • #3",
+          role: "Pemain Paling Serba Bisa",
+          title: "Small Forward (SF)",
+          desc: "Small Forward menggabungkan kecepatan pemain guard dan kekuatan fisik pemain forward. Mereka mampu mencetak poin dari luar maupun dalam area kunci, sekaligus mampu menjaga berbagai posisi pemain lawan.",
+          skills: [
+            "Atletis & Serba Bisa",
+            "Penetrasi Ring (Drive)",
+            "Pertahanan Fleksibel",
+          ],
+          zone: "Semua Area Lapangan",
+          focus: "Scoring & Pertahanan Sayap",
+          star: "LeBron James, Kevin Durant",
+        },
+        {
+          badge: "PF • #4",
+          role: "Petarung Area Kunci",
+          title: "Power Forward (PF)",
+          desc: "Power Forward bermain dekat dengan ring untuk berduel fisik memperebutkan rebound dan mencetak poin jarak dekat. Di basket modern, banyak Power Forward juga memiliki kemampuan menembak tiga angka (Stretch Four).",
+          skills: [
+            "Kekuatan Fisik & Post-Up",
+            "Rebounding Agresif",
+            "Tembakan Jarak Menengah",
+          ],
+          zone: "Low Post & Mid-Range",
+          focus: "Rebound & Pertahanan Dalam",
+          star: "Tim Duncan, Giannis Antetokounmpo",
+        },
+        {
+          badge: "C • #5",
+          role: "Menara Pertahanan Tim",
+          title: "Center (C)",
+          desc: "Center biasanya adalah pemain tertinggi dan terkuat di tim. Tugas utamanya adalah melindungi ring dari tembakan lawan (shot blocking), mengamankan rebound, memasang screen (penghalang), dan menyelesaikan serangan tepat di bawah ring.",
+          skills: [
+            "Tinggi Badan & Jangkauan",
+            "Shot Blocking & Box Out",
+            "Penyelesaian Dekat Ring",
+          ],
+          zone: "Paint Area (Bawah Ring)",
+          focus: "Proteksi Ring & Rebound",
+          star: "Shaquille O'Neal, Nikola Jokić",
+        },
+      ];
+
+      function selectPosition(index) {
+        const data = positionsData[index];
+        const cards = document.querySelectorAll(".pos-card");
+
+        // Update tampilan kartu yang dipilih
+        cards.forEach((card, i) => {
+          const badge = card.querySelector("span");
+          if (i === index) {
+            card.classList.remove("border-gray-200", "bg-white");
+            card.classList.add("border-hoops-orange", "bg-orange-50/60");
+            badge.classList.remove("bg-gray-800");
+            badge.classList.add("bg-hoops-orange");
+          } else {
+            card.classList.add("border-gray-200", "bg-white");
+            card.classList.remove("border-hoops-orange", "bg-orange-50/60");
+            badge.classList.add("bg-gray-800");
+            badge.classList.remove("bg-hoops-orange");
+          }
+        });
+
+        // Update isi panel detail
+        document.getElementById("pos-badge").textContent = data.badge;
+        document.getElementById("pos-role").textContent = data.role;
+        document.getElementById("pos-title").textContent = data.title;
+        document.getElementById("pos-desc").textContent = data.desc;
+        document.getElementById("pos-zone").textContent = data.zone;
+        document.getElementById("pos-focus").textContent = data.focus;
+        document.getElementById("pos-star").textContent = data.star;
+
+        const skillsContainer = document.getElementById("pos-skills");
+        skillsContainer.innerHTML = data.skills
+          .map(
+            (skill) =>
+              `<span class="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs font-medium text-gray-200">${skill}</span>`,
+          )
+          .join("");
+      }
+
+      // --- 3. LOGIKA KUIS INTERAKTIF ---
+      const quizQuestions = [
+        {
+          question:
+            "Siapakah tokoh yang menemukan olahraga bola basket pada tahun 1891?",
+          options: [
+            "Dr. James Naismith",
+            "William G. Morgan",
+            "Michael Jordan",
+            "Pierre de Coubertin",
+          ],
+          answer: 0,
+          explanation:
+            "Benar! Dr. James Naismith menciptakan permainan bola basket pada Desember 1891 di Springfield, Massachusetts.",
+        },
+        {
+          question:
+            "Berapa poin yang didapatkan jika pemain memasukkan bola dari luar garis busur (Three-Point Line)?",
+          options: ["1 Poin", "2 Poin", "3 Poin", "4 Poin"],
+          answer: 2,
+          explanation:
+            "Tepat sekali! Tembakan dari luar garis busur bernilai 3 poin, sedangkan di dalam garis bernilai 2 poin.",
+        },
+        {
+          question:
+            "Apa nama pelanggaran ketika seorang pemain melangkah lebih dari dua langkah sambil memegang bola tanpa melakukan dribble?",
+          options: ["Double Dribble", "Traveling", "Rebounding", "Foul Out"],
+          answer: 1,
+          explanation:
+            "Betul! Melangkah terlalu banyak tanpa memantulkan bola disebut pelanggaran Traveling.",
+        },
+        {
+          question:
+            "Posisi pemain basket mana yang dijuluki sebagai 'Jenderal Lapangan' dan bertugas mengatur serangan?",
+          options: [
+            "Center (C)",
+            "Power Forward (PF)",
+            "Point Guard (PG)",
+            "Shooting Guard (SG)",
+          ],
+          answer: 2,
+          explanation:
+            "Sempurna! Point Guard adalah pengatur serangan utama dan pengumpan bola bagi tim.",
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+      let answered = false;
+
+      function loadQuestion() {
+        answered = false;
+        const currentQ = quizQuestions[currentQuestionIndex];
+
+        document.getElementById("quiz-progress").textContent =
+          `Pertanyaan ${currentQuestionIndex + 1} dari ${quizQuestions.length}`;
+        document.getElementById("quiz-question").textContent =
+          currentQ.question;
+        document.getElementById("quiz-feedback").classList.add("hidden");
+        document.getElementById("next-btn").classList.add("hidden");
+
+        const optionsContainer = document.getElementById("quiz-options");
+        optionsContainer.innerHTML = "";
+
+        currentQ.options.forEach((option, idx) => {
+          const btn = document.createElement("button");
+          btn.className =
+            "w-full text-left p-4 rounded-xl border border-gray-200 hover:border-hoops-orange hover:bg-orange-50/40 font-medium text-gray-800 transition-all flex items-center justify-between";
+          btn.innerHTML = `<span>${option}</span>`;
+          btn.onclick = () => checkAnswer(idx, btn);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function checkAnswer(selectedIndex, selectedBtn) {
+        if (answered) return;
+        answered = true;
+
+        const currentQ = quizQuestions[currentQuestionIndex];
+        const allBtns = document
+          .getElementById("quiz-options")
+          .querySelectorAll("button");
+        const feedbackEl = document.getElementById("quiz-feedback");
+
+        allBtns.forEach((btn, idx) => {
+          btn.disabled = true;
+          btn.classList.remove(
+            "hover:border-hoops-orange",
+            "hover:bg-orange-50/40",
+          );
+          if (idx === currentQ.answer) {
+            btn.classList.add(
+              "border-green-500",
+              "bg-green-50",
+              "text-green-800",
+              "font-bold",
+            );
+          }
+        });
+
+        if (selectedIndex === currentQ.answer) {
+          score += 25;
+          feedbackEl.className =
+            "mt-5 p-4 rounded-xl text-sm font-medium bg-green-100 text-green-800 border border-green-200";
+          feedbackEl.textContent = currentQ.explanation;
+        } else {
+          selectedBtn.classList.add(
+            "border-red-500",
+            "bg-red-50",
+            "text-red-800",
+          );
+          feedbackEl.className =
+            "mt-5 p-4 rounded-xl text-sm font-medium bg-red-100 text-red-800 border border-red-200";
+          feedbackEl.textContent = `Kurang tepat. ${currentQ.explanation}`;
+        }
+
+        feedbackEl.classList.remove("hidden");
+        const nextBtn = document.getElementById("next-btn");
+        nextBtn.textContent =
+          currentQuestionIndex === quizQuestions.length - 1
+            ? "Lihat Hasil Akhir →"
+            : "Pertanyaan Berikutnya →";
+        nextBtn.classList.remove("hidden");
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizQuestions.length) {
+          loadQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      function showResult() {
+        document.getElementById("quiz-container").classList.add("hidden");
+        document.getElementById("quiz-progress").classList.add("hidden");
+        document.getElementById("quiz-result").classList.remove("hidden");
+        document.getElementById("final-score").textContent = score;
+
+        const msgEl = document.getElementById("score-message");
+        if (score === 100) {
+          msgEl.textContent =
+            "Luar biasa! Kamu adalah MVP sejati dengan pemahaman sempurna tentang bola basket!";
+        } else if (score >= 75) {
+          msgEl.textContent =
+            "Kerja bagus! Pengetahuan basketmu sudah sangat solid dan siap turun ke lapangan.";
+        } else {
+          msgEl.textContent =
+            "Tetap semangat! Yuk baca kembali materi di atas dan coba tantangan kuisnya lagi.";
+        }
+      }
+
+      function restartQuiz() {
+        currentQuestionIndex = 0;
+        score = 0;
+        document.getElementById("quiz-result").classList.add("hidden");
+        document.getElementById("quiz-container").classList.remove("hidden");
+        document.getElementById("quiz-progress").classList.remove("hidden");
+        loadQuestion();
+      }
+
+      // Inisialisasi kuis saat halaman selesai dimuat
+      window.addEventListener("DOMContentLoaded", loadQuestion);
+    </script>
+  </body>
+</html>
